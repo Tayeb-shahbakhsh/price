@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.price.databinding.RecyclerLayoutBinding
 
-class MyAdapter(val mockList: MutableList<String>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+class MyAdapter(val list: MutableList<CurrencyData>?) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(val binding: RecyclerLayoutBinding): RecyclerView.ViewHolder(binding.root){
 
@@ -17,9 +17,9 @@ class MyAdapter(val mockList: MutableList<String>) : RecyclerView.Adapter<MyAdap
         )
 
     override fun onBindViewHolder(holder: MyAdapter.MyViewHolder, position: Int) {
-        holder.binding.textView.text = mockList[position]
+        holder.binding.textView.text = list?.get(position)?.title
     }
 
     override fun getItemCount(): Int =
-        mockList.size
+        list!!.size
 }
